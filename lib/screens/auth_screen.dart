@@ -35,10 +35,12 @@ class _AuthScreenState extends State<AuthScreen> {
             .child(_authResult.user.uid + '.jpg');
         await ref.putFile(image).onComplete;
 
+        final url = await ref.getDownloadURL();
+
         await Firestore.instance
             .collection('users')
             .document(_authResult.user.uid)
-            .setData({'username': userName, 'email': email});
+            .setData({'username': userName, 'email': email, 'image_url': url});
       }
     } on PlatformException catch (err) {
       var message = 'Please provide valid credentials';

@@ -38,6 +38,7 @@ class _MessagesState extends State<Messages> {
                 return Messagebubble(
                   chatDocs[index]['text'],
                   chatDocs[index]['username'],
+                  chatDocs[index]['userImage'],
                   chatDocs[index]['userId'] == futureSnapshot.data.uid,
                   key: ValueKey(chatDocs[index].documentID),
                 );
